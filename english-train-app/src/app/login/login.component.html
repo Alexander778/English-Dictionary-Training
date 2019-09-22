@@ -1,0 +1,30 @@
+<div id="loginFormWrap">
+  <form class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Login"
+        name="login"
+        ngModel
+        required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input
+        type="password"
+        matInput
+        placeholder="Password"
+        name="password"
+        ngModel
+        required>
+    </mat-form-field>
+
+    <button
+      id="logIn"
+      mat-raised-button
+      color="primary"
+    >Log In</button>
+  </form>
+</div>
+
+
