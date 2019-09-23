@@ -2,7 +2,7 @@
   <table>
     <tr>
       <td colspan="3" style="text-align: center; vertical-align: bottom;">
-          <img mat-card-avatar src="/assets/images/flag.png" [@mainPanel]="state">
+          <img mat-card-avatar src="/assets/images/flag.png" [@mainPanel]="statePanel">
       </td>
     </tr>
     <tr>
@@ -10,7 +10,7 @@
           <img id="leftIco" src="/assets/images/boxx.png" [@icoLState]="state">
       </td>
       <td>
-          <mat-card style="z-index: 5" [@mainPanel]="state">
+          <mat-card style="z-index: 5" [@mainPanel]="statePanel">
               <mat-card-title><p style="text-align: center">Login Form</p></mat-card-title>
               <form class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
                 <mat-form-field class="full-width">

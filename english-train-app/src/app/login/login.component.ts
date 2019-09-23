@@ -33,25 +33,29 @@ import { trigger, style, state, transition, animate } from '@angular/animations'
       transition('hidden => shown', animate('1.5s'))
     ]),
     trigger('mainPanel', [
-      state('shown', style({
+      state('down', style({
         'opacity': '1',
         transform: 'translateY(0)'
       })),
-      state('hidden', style({
+      state('up', style({
         'opacity': '0',
-        transform: 'translateY(-155px)'
+        transform: 'translateY(155px)'
       })),
-      transition('hidden => shown', animate('1.5s'))
+      transition('up => down', animate('1.5s'))
     ])
   ]
 })
 export class LoginComponent implements OnInit {
   state = 'hidden';
+  statePanel = 'up';
   constructor(private router: Router) { }
 
   ngOnInit() {
+    if (this.statePanel === 'up') {
+      setTimeout(() => this.statePanel = 'down');
+    }
     if (this.state === 'hidden') {
-      setTimeout(() => this.state = 'shown');
+      setTimeout(() => this.state = 'shown', 1600);
     }
   }
 
