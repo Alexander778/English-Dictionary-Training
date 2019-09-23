@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
 import {MatButtonModule,
   MatCheckboxModule,
   MatFormFieldModule,
@@ -9,26 +8,24 @@ import {MatButtonModule,
   MatRippleModule,
   MatCardModule,
   MatIconModule,
-  MatTableModule} from '@angular/material';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+  MatTableModule,
+  MatDialogModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DialogWindowComponent } from './dialog-window/dialog-window.component';
 
-
-const routes =[
-  {path:'login',component:'loginComponent'},
-  {path:'main',component:'mainpageComponent'}
-];
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainpageComponent
+    MainpageComponent,
+    DialogWindowComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +39,9 @@ const routes =[
     MatCardModule,
     MatIconModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    AppRoutingModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

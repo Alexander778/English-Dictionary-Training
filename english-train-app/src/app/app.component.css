@@ -1,1 +1,19 @@
+.image {
+    position: fixed;
+    min-width: 100%;
+    background-image: url("/assets/images/cool-background.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-size: cover;
+    }
 
+.logo
+{
+    content: url("/assets/images/english.png");
+    border: 1px solid red;
+    position: absolute;
+    margin: auto;
+    max-width: 500px;
+    max-height: 400px;
+}

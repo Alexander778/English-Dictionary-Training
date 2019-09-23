@@ -15,16 +15,19 @@
   bottom: 0;
   margin:auto;
   width: 300px;
-  height: 300px;
+  height: 192px;
+  border-radius: 5%;
 }
 
 #logIn{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin:auto;
+  position: relative;
+  margin-left: 10px;
   width: 90px;
   height: 40px;
+  background-color: lightcyan;
+}
+
+.btnHolder
+{
+  text-align: center;
 }
