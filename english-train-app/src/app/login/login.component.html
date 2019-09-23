@@ -1,35 +1,38 @@
-<!--<span id="loginFormWrap">
-  <form class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Login" name="login" ngModel required>
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <input type="password" matInput placeholder="Password" name="password" ngModel required>
-    </mat-form-field>
-
-    <div class="btnHolder">
-      <button id="logIn" mat-raised-button>Log In</button>
-    </div>
-  </form>
-</span>-->
-
-
-<div id="loginFormWrap">
-  <mat-card>
-    <mat-card-title>Enter to system</mat-card-title>
-    <form class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Login" name="login" ngModel required>
-      </mat-form-field>
-
-      <mat-form-field class="full-width">
-        <input type="password" matInput placeholder="Password" name="password" ngModel required>
-      </mat-form-field>
-
-      <div class="btnHolder">
-        <button id="logIn" mat-raised-button>Log In</button>
-      </div>
-    </form>
-  </mat-card>
+<div id=container>
+  <table>
+    <tr>
+      <td colspan="3" style="text-align: center; vertical-align: bottom;">
+          <img mat-card-avatar src="/assets/images/flag.png">
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; vertical-align: bottom;">
+          <img id="leftIco" src="/assets/images/.png">
+      </td>
+      <td>
+          <mat-card>
+              <mat-card-title><p style="text-align: center">Login Form</p></mat-card-title>
+              <form class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Login" name="login" ngModel required>
+                </mat-form-field>
+          
+                <mat-form-field class="full-width">
+                  <input type="password" matInput placeholder="Password" name="password" ngModel required>
+                </mat-form-field>
+          
+                <div class="btnHolder">
+                  <button id="logIn" mat-raised-button>Log In</button>
+                </div>
+                <div>
+                  <p style="text-align: center;">Don't have account? <a href="#">Register now</a></p>
+                </div>
+              </form>
+            </mat-card>
+      </td>
+      <td>
+        <img id="rightIco" src="/assets/images/.png">
+      </td>
+    </tr>
+  </table>
 </div>

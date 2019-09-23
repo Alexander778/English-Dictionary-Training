@@ -31,3 +31,48 @@
 {
   text-align: center;
 }
+
+a
+{
+  color:lightblue;
+  text-decoration: none;  
+}
+
+a:hover
+{
+  color:violet;
+  text-decoration: none;  
+}
+
+#leftSide,#middleSide,#rightSide
+{
+  border:1px solid red;
+  display: inline;
+}
+
+#container
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#leftIco
+{
+  height: 100px;
+  width: 100px;
+}
+
+#topIco
+{
+  height: 100px;
+  width: 300px;
+}
+
+
+#rightIco
+{
+  height: 100px;
+  width: 100px;
+}
