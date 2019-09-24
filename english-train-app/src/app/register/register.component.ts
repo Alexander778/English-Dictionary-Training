@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, style, state, transition, animate } from '@angular/animations';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { trigger, style, state, transition, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
   animations: [
     trigger('icoLState', [
       state('shown', style({
@@ -43,7 +43,7 @@ import { trigger, style, state, transition, animate } from '@angular/animations'
     ])
   ]
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   state = 'hidden';
   statePanel = 'up';
   constructor(private router: Router) { }
@@ -61,6 +61,10 @@ export class LoginComponent implements OnInit {
     if (form.value.login !== '' && form.value.password !== '') {
       this.router.navigate(['/main']);
     }
+  }
+
+  returnToLogin() {
+    this.router.navigate(['/login']);
   }
 
 }

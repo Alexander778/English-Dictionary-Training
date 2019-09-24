@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DialogWindowComponent } from './dialog-window/dialog-window.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -25,7 +26,8 @@ import { DialogWindowComponent } from './dialog-window/dialog-window.component';
     AppComponent,
     LoginComponent,
     MainpageComponent,
-    DialogWindowComponent
+    DialogWindowComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
