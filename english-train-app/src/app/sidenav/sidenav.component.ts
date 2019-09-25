@@ -66,7 +66,10 @@ export class SidenavComponent implements OnInit {
   selectedIndex: number = null;
 
   toStartPage() {
-    this.router.navigate(['../start'], { relativeTo: this.route });
+    this.router.navigate(['./start'], { relativeTo: this.route });
+    if (this.oldIndex !== null) {
+      this.modules[this.oldIndex].state = 'noclicked';
+    }
   }
 
   clickOnItem(index: number) {

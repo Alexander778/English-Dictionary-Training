@@ -17,10 +17,10 @@ const appRoutes: Routes = [
   {
     path: 'main', component: MainpageComponent,
     children: [
-      { path: 'start', component: StartPageComponent },
-      { path: 'list', component: WordslistComponent },
-      { path: 'testing', component: TestingComponent },
-      { path: 'user', component: UserinfoComponent }
+      { path: 'start', component: StartPageComponent, data: { animation: 'Start' } },
+      { path: 'list', component: WordslistComponent, data: { animation: 'List' } },
+      { path: 'testing', component: TestingComponent, data: { animation: 'Testing' } },
+      { path: 'user', component: UserinfoComponent, data: { animation: 'User' } }
     ]
   }
 ];
