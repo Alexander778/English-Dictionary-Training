@@ -1,21 +1,18 @@
-<!--<div id="container">
-    <div id="userInfo">
-
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div id="container">
+      <mat-card>
+        <mat-card-title>User Information</mat-card-title>
+        <mat-card-content>Login: {{login}}</mat-card-content>
+        <mat-card-subtitle>The best result: {{bestResult}}</mat-card-subtitle>
+        <mat-card-footer id="btnsBlock">
+          <button mat-fab>+</button>
+          <button mat-fab color="warn">Start</button>
+        </mat-card-footer>
+      </mat-card>
     </div>
-    <div id="btnsBlock">
-        <button id="btnAddWord">Accent</button>
-        <button id="btnQuiz">Accent</button>
-    </div>
-</div>-->
-
-<div id="container">
-  <mat-card>
-    <mat-card-title>User Information</mat-card-title>
-    <mat-card-content>Login: {{login}}</mat-card-content>
-    <mat-card-subtitle>The best result: {{bestResult}}</mat-card-subtitle>
-    <mat-card-footer id="btnsBlock">
-        <button mat-fab>+</button>
-        <button mat-fab color="warn">Start</button>
-    </mat-card-footer>
-  </mat-card>
-</div>
+  </mat-drawer-content>
+</mat-drawer-container>

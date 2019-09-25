@@ -11,6 +11,9 @@ import {MatButtonModule,
   MatTableModule,
   MatDialogModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +21,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DialogWindowComponent } from './dialog-window/dialog-window.component';
 import { RegisterComponent } from './register/register.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 
@@ -27,7 +31,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     MainpageComponent,
     DialogWindowComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     MatTableModule,
     AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
