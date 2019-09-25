@@ -22,6 +22,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { DialogWindowComponent } from './dialog-window/dialog-window.component';
 import { RegisterComponent } from './register/register.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { WordslistComponent } from './wordslist/wordslist.component';
+import { TestingComponent } from './testing/testing.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
+import { StartPageComponent } from './start-page/start-page.component';
 
 
 
@@ -32,7 +36,11 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MainpageComponent,
     DialogWindowComponent,
     RegisterComponent,
-    SidenavComponent
+    SidenavComponent,
+    WordslistComponent,
+    TestingComponent,
+    UserinfoComponent,
+    StartPageComponent
   ],
   imports: [
     BrowserModule,

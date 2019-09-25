@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.value.login !== '' && form.value.password !== '') {
-      this.router.navigate(['/main']);
+      this.router.navigate(['/main/start']);
     }
   }
 

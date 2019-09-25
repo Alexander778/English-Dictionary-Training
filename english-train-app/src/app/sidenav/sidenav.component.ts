@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../models/items';
 import { FormBuilder } from '@angular/forms';
 import { style, transition, animate, trigger, state } from '@angular/animations';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -13,7 +14,18 @@ import { style, transition, animate, trigger, state } from '@angular/animations'
         'background-color': 'white'
       })),
       state('clicked', style({
-        'background-image': 'linear-gradient(to right, #e4fee8 , #22c1c3)'
+        'background-color': '#e4fee8',
+        'border-left': '5px solid green'
+      })),
+      transition('noclicked=>clicked', animate('0.3s')),
+      transition('clicked=>noclicked', animate('0.3s'))
+    ]),
+    trigger('menuLine', [
+      state('noclicked', style({
+        'background-color': 'white'
+      })),
+      state('clicked', style({
+        'font-weight': '700'
       })),
       transition('noclicked=>clicked', animate('0.3s')),
       transition('clicked=>noclicked', animate('0.3s'))
@@ -24,6 +36,8 @@ import { style, transition, animate, trigger, state } from '@angular/animations'
 
 
 export class SidenavComponent implements OnInit {
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
   login = 'testlogin'; // test
   bestResult = 23; // test
   state = 'noclicked';
@@ -32,22 +46,28 @@ export class SidenavComponent implements OnInit {
     {
       icon: 'list',
       name: 'Words',
-      state: 'noclicked'
+      state: 'noclicked',
+      routeTo: './list'
     },
     {
       icon: 'assignment_turned_in',
       name: 'Testing',
-      state: 'noclicked'
+      state: 'noclicked',
+      routeTo: './testing'
 
     },
     {
       icon: 'account_box',
       name: 'User',
-      state: 'noclicked'
-
+      state: 'noclicked',
+      routeTo: './user'
     },
   ];
   selectedIndex: number = null;
+
+  toStartPage() {
+    this.router.navigate(['../start'], { relativeTo: this.route });
+  }
 
   clickOnItem(index: number) {
     this.selectedIndex = index;
@@ -64,9 +84,8 @@ export class SidenavComponent implements OnInit {
       this.modules[this.oldIndex].state = 'noclicked';
     }
     this.oldIndex = index;
+    this.router.navigate([this.modules[index].routeTo], { relativeTo: this.route });
   }
-  constructor() { }
-
   ngOnInit() {
   }
 
