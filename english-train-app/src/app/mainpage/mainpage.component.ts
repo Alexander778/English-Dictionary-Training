@@ -6,9 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mainpage.component.css']
 })
 export class MainpageComponent implements OnInit {
-  login = 'testlogin'; // test
-  bestResult = 23; // test
-
   constructor() { }
 
   ngOnInit() {

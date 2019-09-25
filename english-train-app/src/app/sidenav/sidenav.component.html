@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-title>English Training System</mat-card-title>
+  <mat-card-content>Login: {{login}}</mat-card-content>
+  <mat-card-subtitle>The best result: {{bestResult}}</mat-card-subtitle>
+</mat-card>
+<mat-list>
+  <mat-list-item *ngFor="let submodule of modules; let i = index" [class.active]="selectedIndex === i"
+    (click)="setIndex(i)" [@menuItem]="submodule.state">
+    <mat-icon mat-list-icon>{{submodule.icon}}</mat-icon>
+    <h4 mat-line>{{submodule.name}}</h4>
+  </mat-list-item>
+</mat-list>
+
+
+<!--<ul class="sub_modules">
+    <li *ngFor="let subModule of subModules; let i = index" 
+        [class.active]="selectedIndex === i" 
+        (click)="setIndex(i)">
+      <a>{{ subModule.name }}</a>
+    </li>
+  </ul>-->
+
+<!--<mat-icon>keyboard_arrow_left</mat-icon>
+<mat-divider></mat-divider>-->
