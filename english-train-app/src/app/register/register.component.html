@@ -1,0 +1,42 @@
+<div id=container>
+  <table>
+    <tr>
+      <td colspan="3" style="text-align: center; vertical-align: bottom;">
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: right; vertical-align: bottom;">
+        <img id="leftIco" src="/assets/images/boxx.png" [@icoLState]="state">
+      </td>
+      <td>
+        <mat-card style="z-index: 5" [@mainPanel]="statePanel">
+          <mat-card-title>
+            <button mat-button (click)="returnToLogin()"><mat-icon>keyboard_arrow_left</mat-icon> Return to Login Form</button>
+            <p style="text-align: center">Register Form</p>
+          </mat-card-title>
+          <form class="register-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Login" name="login" ngModel required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <input type="password" matInput placeholder="Create New Password" name="password" ngModel required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <input type="password" matInput placeholder="Confirm New Password" name="passwordConfirm" ngModel
+                required>
+            </mat-form-field>
+
+            <div class="btnHolder">
+              <button id="registerIn" mat-raised-button>Register</button>
+            </div>
+          </form>
+        </mat-card>
+      </td>
+      <td style="text-align: left; vertical-align: bottom;">
+        <img id="rightIco" src="/assets/images/boxx.png" [@icoRState]="state">
+      </td>
+    </tr>
+  </table>
+</div>

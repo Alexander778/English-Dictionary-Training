@@ -1,0 +1,59 @@
+.register-form {
+    min-width: 150px;
+    max-width: 500px;
+  }
+  
+  img
+  {
+    margin:5px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  #registerIn{
+    position: relative;
+    margin-left: 10px;
+    width: 90px;
+    height: 40px;
+    background-color: lightcyan;
+  }
+  
+  .btnHolder
+  {
+    text-align: center;
+  }
+  
+  a
+  {
+    color:lightblue;
+    text-decoration: none;  
+  }
+  
+  a:hover
+  {
+    color:violet;
+    text-decoration: none;  
+  }
+  
+  #container
+  {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      
+  }
+  
+  #leftIco,#rightIco
+  {
+    height: 364px;
+    overflow: visible;
+  }
+  
+  #topIco
+  {
+    height: 100px;
+    width: 300px;
+  }
