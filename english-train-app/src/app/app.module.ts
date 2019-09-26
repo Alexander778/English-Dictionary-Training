@@ -14,6 +14,10 @@ import {FormsModule} from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDividerModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -22,6 +26,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { DialogWindowComponent } from './dialog-window/dialog-window.component';
 import { RegisterComponent } from './register/register.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { WordslistComponent } from './wordslist/wordslist.component';
+import { TestingComponent } from './testing/testing.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
+import { StartPageComponent } from './start-page/start-page.component';
+import { TablewordComponent } from './tableword/tableword.component';
+import { EditWordDialogComponent } from './edit-word-dialog/edit-word-dialog.component';
 
 
 
@@ -32,7 +42,13 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MainpageComponent,
     DialogWindowComponent,
     RegisterComponent,
-    SidenavComponent
+    SidenavComponent,
+    WordslistComponent,
+    TestingComponent,
+    UserinfoComponent,
+    StartPageComponent,
+    TablewordComponent,
+    EditWordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +67,14 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MatDialogModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatPaginatorModule,
+    MatTabsModule,
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogWindowComponent],
 })
 export class AppModule { }

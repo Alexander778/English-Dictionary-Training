@@ -1,19 +1,13 @@
-.active
+mat-list-item
 {
-    background-color: aqua;
-    margin: 2px;
-    border-radius: 5%;
+    outline: none;
 }
 
-.noactive
-{
-    border: 1px solid red;
-    margin: 2px;
-    border-radius: 5%; 
+.clicked{
+    background-color: #e4fee8;
+    border-left: '5px solid green'
 }
-
-.item
+.noclicked
 {
-    /*background-image: linear-gradient(to right, #e4fee8 , #22c1c3);*/
+    background-color: white;
 }
-

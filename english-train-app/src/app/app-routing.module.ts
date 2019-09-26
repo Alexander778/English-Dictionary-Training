@@ -4,13 +4,25 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RegisterComponent } from './register/register.component';
+import { WordslistComponent } from './wordslist/wordslist.component';
+import { TestingComponent } from './testing/testing.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
+import { StartPageComponent } from './start-page/start-page.component';
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'main', component: MainpageComponent }
+  {
+    path: 'main', component: MainpageComponent,
+    children: [
+      { path: 'start', component: StartPageComponent, data: { animation: 'Start' } },
+      { path: 'list', component: WordslistComponent, data: { animation: 'List' } },
+      { path: 'testing', component: TestingComponent, data: { animation: 'Testing' } },
+      { path: 'user', component: UserinfoComponent, data: { animation: 'User' } }
+    ]
+  }
 ];
 
 @NgModule({
