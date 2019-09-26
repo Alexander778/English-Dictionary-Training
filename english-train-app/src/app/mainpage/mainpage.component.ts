@@ -33,11 +33,8 @@ import { trigger, transition, query, style, group, animate } from '@angular/anim
         ])
       ])
 })
-export class MainpageComponent implements OnInit {
+
+export class MainpageComponent {
   constructor() { }
-
-  ngOnInit() {
-  }
-
 
 }

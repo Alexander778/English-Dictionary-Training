@@ -6,11 +6,4 @@ mat-tab-group
 {
   width: 50%;
 }
-table {
-  width: 100%;
-  text-align: center !important;
-}
 
-.mat-header-cell {
-  text-align: center;
-}

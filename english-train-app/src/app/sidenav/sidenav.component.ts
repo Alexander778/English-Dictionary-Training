@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../models/items';
-import { FormBuilder } from '@angular/forms';
 import { style, transition, animate, trigger, state } from '@angular/animations';
 import { Router, ActivatedRoute } from '@angular/router';
 
