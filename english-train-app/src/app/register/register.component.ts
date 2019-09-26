@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, style, state, transition, animate } from '@angular/animations';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service.service';
 
 @Component({
   selector: 'app-register',
@@ -46,7 +47,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   state = 'hidden';
   statePanel = 'up';
-  constructor(private router: Router) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit() {
     if (this.statePanel === 'up') {
@@ -58,13 +59,21 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    if (form.value.login !== '' && form.value.password !== '') {
-      this.router.navigate(['/main']);
+    console.log(form);
+    if (form.value.login === '' || form.value.password === '' || form.value.passwordConfirm === '') {
+      this.authService.openSnackBar('Please fill all fields!', '');
+    } else if (form.value.password !== form.value.passwordConfirm) {
+      this.authService.openSnackBar('Password not match with confirm', '');
+    } else {
+      this.authService.register(form.value.login, form.value.password);
+      this.router.navigate(['/login']);
     }
   }
 
   returnToLogin() {
     this.router.navigate(['/login']);
   }
+
+
 
 }
