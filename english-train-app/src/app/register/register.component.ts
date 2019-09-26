@@ -59,7 +59,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
     if (form.value.login === '' || form.value.password === '' || form.value.passwordConfirm === '') {
       this.authService.openSnackBar('Please fill all fields!', '');
     } else if (form.value.password !== form.value.passwordConfirm) {

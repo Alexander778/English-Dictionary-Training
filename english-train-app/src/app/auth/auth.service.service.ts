@@ -28,10 +28,10 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Success!', value);
+        this.openSnackBar('Please fill all fields!', '');
       })
       .catch(err => {
-        console.log('Something went wrong:', err.message);
+        this.openSnackBar('Error', '');
       });
   }
 
