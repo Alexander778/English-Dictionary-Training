@@ -17,6 +17,7 @@ import {MatListModule} from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -29,6 +30,8 @@ import { WordslistComponent } from './wordslist/wordslist.component';
 import { TestingComponent } from './testing/testing.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { TablewordComponent } from './tableword/tableword.component';
+import { EditWordDialogComponent } from './edit-word-dialog/edit-word-dialog.component';
 
 
 
@@ -43,7 +46,9 @@ import { StartPageComponent } from './start-page/start-page.component';
     WordslistComponent,
     TestingComponent,
     UserinfoComponent,
-    StartPageComponent
+    StartPageComponent,
+    TablewordComponent,
+    EditWordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,9 +70,11 @@ import { StartPageComponent } from './start-page/start-page.component';
     MatListModule,
     MatPaginatorModule,
     MatTabsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogWindowComponent],
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Word } from '../models/word';
+import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-wordslist',
@@ -7,44 +8,21 @@ import { Word } from '../models/word';
   styleUrls: ['./wordslist.component.css']
 })
 export class WordslistComponent implements OnInit {
-  words: Array<Word> = [
-    {
-      id: 1,
-      word: 'a pen',
-      translation: 'ручка'
-    },
-    {
-      id: 2,
-      word: 'a pencil',
-      translation: 'олівець'
-    },
-    {
-      id: 3,
-      word: 'an apple',
-      translation: 'яблуко'
-    },
-    {
-      id: 4,
-      word: 'awesome',
-      translation: 'крутий'
-    },
-    {
-      id: 5,
-      word: 'amazing',
-      translation: 'дивовижний'
-    }
-  ];
-  displayedColumns: string[] = ['Position', 'Word', 'Translation', 'Action'];
-  iconsState = {};
-  constructor() {
-  }
+
+  constructor(
+    private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  showActions(act: boolean, index: number) {
-    this.iconsState[index] = act;
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogWindowComponent, {
+      width: '250px'
+    });
   }
 
+  AddWord() {
+    this.openDialog();
+  }
 
 }
