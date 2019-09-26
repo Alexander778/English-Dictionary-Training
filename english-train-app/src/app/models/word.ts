@@ -1,6 +1,5 @@
 export class Word {
-  Id: number;
+  id: number;
   word: string;
   translation: string;
-  icon: string;
 }
