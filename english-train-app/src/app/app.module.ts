@@ -37,7 +37,8 @@ import { EditWordDialogComponent } from './edit-word-dialog/edit-word-dialog.com
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { AuthService } from './auth/auth.service.service';
+import { AuthGuard } from './core/auth.guard';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -49,46 +50,7 @@ const config = {
   appId: '1:472677143489:web:5bc27d935505a6b6f89540',
   measurementId: 'G-H9JMRDKBWR'
 };
-const customNotifierOptions: NotifierOptions = {
-  position: {
-    horizontal: {
-      position: 'left',
-      distance: 12
-    },
-    vertical: {
-      position: 'bottom',
-      distance: 12,
-      gap: 10
-    }
-  },
-  theme: 'material',
-  behaviour: {
-    autoHide: 5000,
-    onClick: 'hide',
-    onMouseover: 'pauseAutoHide',
-    showDismissButton: true,
-    stacking: 4
-  },
-  animations: {
-    enabled: true,
-    show: {
-      preset: 'slide',
-      speed: 300,
-      easing: 'ease'
-    },
-    hide: {
-      preset: 'fade',
-      speed: 300,
-      easing: 'ease',
-      offset: 50
-    },
-    shift: {
-      speed: 300,
-      easing: 'ease'
-    },
-    overlap: 150
-  }
-};
+
 
 @NgModule({
   declarations: [
@@ -129,10 +91,9 @@ const customNotifierOptions: NotifierOptions = {
     MatSelectModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    MatSnackBarModule,
-    NotifierModule.withConfig(customNotifierOptions)
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [DialogWindowComponent],
 })

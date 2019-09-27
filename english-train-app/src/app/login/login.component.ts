@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { trigger, style, state, transition, animate } from '@angular/animations';
 import { AuthService } from '../auth/auth.service.service';
-import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-login',
@@ -48,10 +47,8 @@ import { NotifierService } from 'angular-notifier';
 export class LoginComponent implements OnInit {
   state = 'hidden';
   statePanel = 'up';
-  notifier: NotifierService;
 
-  constructor(private router: Router, private authService: AuthService, notifier: NotifierService) {
-    this.notifier = notifier;
+  constructor(private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {

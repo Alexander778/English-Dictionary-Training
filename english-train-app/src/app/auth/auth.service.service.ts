@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { MatSnackBar } from '@angular/material';
-import { NotifierService } from 'angular-notifier';
 
 
 
@@ -13,16 +12,22 @@ import { NotifierService } from 'angular-notifier';
 export class AuthService {
   user: User;
   router: Router;
+  authState: any = null;
 
   constructor(public afAuth: AngularFireAuth, private _snackBar: MatSnackBar) {
     this.afAuth.authState.subscribe(user => {
+      this.authState = user;
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
       } else {
         localStorage.setItem('user', null);
       }
-    })
+    });
+  }
+
+  get authenticated(): boolean {
+    return this.authState !== null;
   }
 
   register(email: string, password: string, router: Router) {
@@ -36,6 +41,7 @@ export class AuthService {
       .catch(err => {
         this.openSnackBar(err.message, '');
       });
+
   }
 
   login(email: string, password: string, router: Router) {
