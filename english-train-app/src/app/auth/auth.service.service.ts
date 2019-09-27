@@ -12,9 +12,11 @@ import { MatSnackBar } from '@angular/material';
 export class AuthService {
   user: User;
   router: Router;
+  authState: any = null;
 
   constructor(public afAuth: AngularFireAuth, private _snackBar: MatSnackBar) {
     this.afAuth.authState.subscribe(user => {
+      this.authState = user;
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
@@ -22,6 +24,10 @@ export class AuthService {
         localStorage.setItem('user', null);
       }
     });
+  }
+
+  get authenticated(): boolean {
+    return this.authState !== null;
   }
 
   register(email: string, password: string, router: Router) {

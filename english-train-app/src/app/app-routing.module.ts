@@ -8,6 +8,7 @@ import { WordslistComponent } from './wordslist/wordslist.component';
 import { TestingComponent } from './testing/testing.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { AuthGuard } from './core/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -15,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'main', component: MainpageComponent,
+    path: 'main', component: MainpageComponent, canActivate : [AuthGuard],
     children: [
       { path: 'start', component: StartPageComponent, data: { animation: 'Start' } },
       { path: 'list', component: WordslistComponent, data: { animation: 'List' } },
