@@ -39,7 +39,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthService } from './auth/auth.service.service';
 import { AuthGuard } from './core/auth.guard';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { FillTableService } from './services/fillTable.service';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -93,9 +96,11 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     MatSnackBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, FillTableService],
   bootstrap: [AppComponent],
   entryComponents: [DialogWindowComponent],
 })

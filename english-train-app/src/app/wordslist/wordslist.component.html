@@ -1,5 +1,5 @@
-<button mat-fab style="background-color: green; color:white;" (click)="AddWord()"><mat-icon>add</mat-icon></button>
-<mat-tab-group>
+<button mat-fab matTooltip="Add new word" style="background-color: green; color:white;" (click)="AddWord()"><mat-icon>add</mat-icon></button>
+<mat-tab-group (selectedTabChange)="changeTabStrip($event)">
   <mat-tab label="Nouns">
       <app-tableword></app-tableword>
   </mat-tab>
