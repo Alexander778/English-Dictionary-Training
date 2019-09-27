@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { MatSnackBar } from '@angular/material';
+import { NotifierService } from 'angular-notifier';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,31 +25,32 @@ export class AuthService {
     })
   }
 
-  register(email: string, password: string) {
+  register(email: string, password: string, router: Router) {
     this.afAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        this.openSnackBar('Please fill all fields!', '');
+        this.openSnackBar('Registering was success. Please login to system with your email and password!', '');
+        router.navigate(['/login']);
       })
       .catch(err => {
-        this.openSnackBar('Error', '');
+        this.openSnackBar(err.message, '');
       });
   }
 
   login(email: string, password: string, router: Router) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(function (user) {
       router.navigate(['./main/start']);
-    }).catch(function (error) {
+    }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
       if (errorCode === 'auth/wrong-password') {
-        alert('Wrong password.');
+        this.openSnackBar('Wrong password. Please try again!', '');
       } else {
-        alert(errorMessage);
+        this.openSnackBar(errorMessage, '');
       }
-      console.log(error);
+      this.openSnackBar(errorMessage, '');
     });
   }
   logout() {
@@ -58,7 +61,7 @@ export class AuthService {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2000,
+      duration: 5000,
     });
   }
 }

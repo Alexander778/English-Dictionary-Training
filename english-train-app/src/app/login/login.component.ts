@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { trigger, style, state, transition, animate } from '@angular/animations';
 import { AuthService } from '../auth/auth.service.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +48,11 @@ import { AuthService } from '../auth/auth.service.service';
 export class LoginComponent implements OnInit {
   state = 'hidden';
   statePanel = 'up';
-  constructor(private router: Router, private authService: AuthService) { }
+  notifier: NotifierService;
+
+  constructor(private router: Router, private authService: AuthService, notifier: NotifierService) {
+    this.notifier = notifier;
+  }
 
   ngOnInit() {
     if (this.statePanel === 'up') {
@@ -61,7 +66,8 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.value.login !== '' && form.value.password !== '') {
       this.authService.login(form.value.login, form.value.password, this.router);
+    } else {
+      this.authService.openSnackBar('Please fill all fields!', '');
     }
   }
-
 }

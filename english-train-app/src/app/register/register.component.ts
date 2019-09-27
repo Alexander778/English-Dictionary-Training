@@ -64,8 +64,7 @@ export class RegisterComponent implements OnInit {
     } else if (form.value.password !== form.value.passwordConfirm) {
       this.authService.openSnackBar('Password not match with confirm', '');
     } else {
-      this.authService.register(form.value.login, form.value.password);
-      this.router.navigate(['/login']);
+      this.authService.register(form.value.login, form.value.password, this.router);
     }
   }
 
