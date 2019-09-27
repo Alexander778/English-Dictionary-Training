@@ -39,6 +39,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthService } from './auth/auth.service.service';
 import { AuthGuard } from './core/auth.guard';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -91,7 +92,8 @@ const config = {
     MatSelectModule,
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
