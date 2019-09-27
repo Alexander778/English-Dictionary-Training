@@ -33,7 +33,7 @@ import { trigger, transition, query, style, group, animate } from '@angular/anim
         ])
       ])
     ]
-})  
+})
 
 export class MainpageComponent {
   constructor() { }

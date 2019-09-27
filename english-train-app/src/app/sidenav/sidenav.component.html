@@ -1,5 +1,13 @@
 <mat-card>
   <mat-card-title (click)=toStartPage() style="cursor:default">English Training System</mat-card-title>
+  <mat-card-subtitle>
+    <table>
+      <tr>
+        <td><p>User: <b>{{user}}</b></p></td>
+        <td><button mat-icon-button (click)="logout()" matTooltip="Logout"><mat-icon>exit_to_app</mat-icon></button></td>
+      </tr>
+    </table>
+  </mat-card-subtitle>
 </mat-card>
 <mat-list>
   <mat-list-item *ngFor="let submodule of modules; let i = index" [class.active]="selectedIndex === i"

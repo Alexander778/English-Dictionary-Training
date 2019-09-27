@@ -12,7 +12,8 @@ import { AuthService } from '../auth/auth.service.service';
     trigger('icoLState', [
       state('shown', style({
         'opacity': '1',
-        transform: 'translate(0)'
+        transform: 'translate(0)',
+        
       })),
       state('hidden', style({
         'opacity': '0',

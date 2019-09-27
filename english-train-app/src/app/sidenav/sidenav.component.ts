@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../models/items';
 import { style, transition, animate, trigger, state } from '@angular/animations';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth/auth.service.service';
+import { MatDialog } from '@angular/material';
+import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,11 +13,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   animations: [
     trigger('menuItem', [
       state('noclicked', style({
-        'background-color': 'white'
+        'background-color': 'white',
+        'margin-left': '0px'
       })),
       state('clicked', style({
         'background-color': '#e4fee8',
-        'border-left': '5px solid green'
+        'border-left': '5px solid green',
+        'margin-left': '5px'
       })),
       transition('noclicked=>clicked', animate('0.3s')),
       transition('clicked=>noclicked', animate('0.3s'))
@@ -36,9 +41,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class SidenavComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
-  login = 'testlogin'; // test
-  bestResult = 23; // test
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private auth: AuthService,
+    private dialog: MatDialog) { }
+
+  user = this.auth.user.email; // test
   state = 'noclicked';
   oldIndex = null;
   modules: Array<Item> = [
@@ -55,12 +64,12 @@ export class SidenavComponent implements OnInit {
       routeTo: './testing'
 
     },
-    {
+    /*{
       icon: 'account_box',
       name: 'User',
       state: 'noclicked',
       routeTo: './user'
-    }
+    }*/
   ];
   selectedIndex: number = null;
 
@@ -87,6 +96,10 @@ export class SidenavComponent implements OnInit {
     }
     this.oldIndex = index;
     this.router.navigate([this.modules[index].routeTo], { relativeTo: this.route });
+  }
+
+  logout() {
+    this.auth.logout(this.router);
   }
   ngOnInit() {
   }

@@ -30,6 +30,10 @@ export class AuthService {
     return this.authState !== null;
   }
 
+  get currentUserObservable(): any {
+    return this.afAuth.authState;
+  }
+
   register(email: string, password: string, router: Router) {
     this.afAuth
       .auth
@@ -59,10 +63,11 @@ export class AuthService {
       this.openSnackBar(errorMessage, '');
     });
   }
-  logout() {
+  logout(router: Router) {
     this.afAuth.auth.signOut();
     localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    console.log(router);
+    router.navigate(['/login']);
   }
 
   openSnackBar(message: string, action: string) {
