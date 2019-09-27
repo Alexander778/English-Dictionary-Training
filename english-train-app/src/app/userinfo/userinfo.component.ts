@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service.service';
 
 @Component({
   selector: 'app-userinfo',
@@ -8,14 +7,9 @@ import { AuthService } from '../auth/auth.service.service';
 })
 export class UserinfoComponent implements OnInit {
 
-
-  constructor(public authService: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  logout() {
-    this.authService.logout();
   }
 
 }
