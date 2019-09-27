@@ -60,7 +60,7 @@ export class SidenavComponent implements OnInit {
       name: 'User',
       state: 'noclicked',
       routeTo: './user'
-    },
+    }
   ];
   selectedIndex: number = null;
 
