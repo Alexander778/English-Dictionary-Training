@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { MatSnackBar } from '@angular/material';
-import { NotifierService } from 'angular-notifier';
 
 
 
@@ -22,7 +21,7 @@ export class AuthService {
       } else {
         localStorage.setItem('user', null);
       }
-    })
+    });
   }
 
   register(email: string, password: string, router: Router) {
@@ -36,6 +35,7 @@ export class AuthService {
       .catch(err => {
         this.openSnackBar(err.message, '');
       });
+
   }
 
   login(email: string, password: string, router: Router) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, transition, query, style, group, animate } from '@angular/animations';
 
 @Component({
