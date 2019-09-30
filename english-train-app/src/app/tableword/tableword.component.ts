@@ -28,8 +28,6 @@ export class TablewordComponent implements OnInit {
   db: AngularFirestore;
 
 
-
-
   constructor(
     public wordService: FillTableService,
     private dialog: MatDialog,
@@ -95,6 +93,8 @@ export class TablewordComponent implements OnInit {
       debugger;
       this.length = snap.size;
     });*/
+
+    this.length = 6;
 
     this.words = this.wordPageCollection.valueChanges();
     return this.words;
