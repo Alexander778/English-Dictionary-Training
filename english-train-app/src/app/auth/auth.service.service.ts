@@ -17,6 +17,7 @@ export class AuthService {
   constructor(public afAuth: AngularFireAuth, private _snackBar: MatSnackBar) {
     this.afAuth.authState.subscribe(user => {
       this.authState = user;
+
       if (user) {
         this.user = user;
         localStorage.setItem('user', JSON.stringify(this.user));
