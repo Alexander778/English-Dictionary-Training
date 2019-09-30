@@ -1,23 +1,30 @@
 <h1 mat-dialog-title>Add word</h1>
 <mat-dialog-content>
-  <form class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <form class="login-form" [formGroup]="wordGroup">
     <mat-form-field class="full-width">
-      <input matInput placeholder="Word" name="word" ngModel required>
+      <input matInput placeholder="Word" name="word" required formControlName='word'>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput placeholder="Translation" name="translation" ngModel required>
+      <input matInput placeholder="Translation" name="translation" formControlName='translation' required>
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>Word's type</mat-label>
-      <mat-select [(value)]="selected">
+      <mat-select [(value)]="selected" formControlName='type'>
         <mat-option *ngFor="let type of types" [value]="type.id">
           {{type.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-button>Add</button>
-    <button mat-button (click)="cancel()">Cancel</button>
+    <div *ngIf="!isEditMode">
+      <button mat-button (click)="saveNewWord()">Add</button>
+      <button mat-button (click)="cancel()">Cancel</button>
+    </div>
+
+    <div *ngIf="isEditMode">
+        <button mat-button (click)="saveEditWord(this.id)">Save</button>
+        <button mat-button (click)="cancel()">CancelE</button>
+    </div>
   </form>
 </mat-dialog-content>

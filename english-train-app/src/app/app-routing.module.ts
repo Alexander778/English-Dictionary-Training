@@ -4,11 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RegisterComponent } from './register/register.component';
-import { WordslistComponent } from './wordslist/wordslist.component';
 import { TestingComponent } from './testing/testing.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { AuthGuard } from './core/auth.guard';
+import { TablewordComponent } from './tableword/tableword.component';
 
 
 const appRoutes: Routes = [
@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     path: 'main', component: MainpageComponent, canActivate : [AuthGuard],
     children: [
       { path: 'start', component: StartPageComponent, data: { animation: 'Start' } },
-      { path: 'list', component: WordslistComponent, data: { animation: 'List' } },
+      { path: 'list', component: TablewordComponent, data: { animation: 'List' } },
       { path: 'testing', component: TestingComponent, data: { animation: 'Testing' } },
       { path: 'user', component: UserinfoComponent, data: { animation: 'User' } }
     ]

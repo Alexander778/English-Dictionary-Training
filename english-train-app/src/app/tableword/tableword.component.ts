@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AuthService } from '../auth/auth.service.service';
 import { FillTableService } from '../services/fillTable.service';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
+import { DialogConfirmDelWordComponent } from '../dialog-confirm-del-word/dialog-confirm-del-word.component';
 
 @Component({
   selector: 'app-tableword',
@@ -58,11 +61,26 @@ export class TablewordComponent implements OnInit {
   words: Observable<Word[]>;
 
 
-  constructor(public fillService: FillTableService) {
+  constructor(
+    public wordService: FillTableService,
+    private dialog: MatDialog,
+    public snackBar: MatSnackBar) {
     // this.words = this.fillService.words;
   }
   ngOnInit() {
-      this.words = this.fillService.words;
+    this.words = this.wordService.words;
+  }
+
+  openDialog(dialogCom: any, width: string, height: string): void {
+    const dialogRef = this.dialog.open(dialogCom, {
+      width: width,
+      height: height
+    });
+  }
+
+  AddWord() {
+    this.openDialog(DialogWindowComponent, '250px', '340px');
+    this.wordService.isEditMode = false;
   }
 
 
@@ -70,12 +88,16 @@ export class TablewordComponent implements OnInit {
     this.iconsState[index] = act;
   }
 
-  editWord(i: number) {
-
+  editWord(element: any) {
+    this.wordService.isEditMode = true;
+    this.wordService.currentWord = element;
+    this.openDialog(DialogWindowComponent, '250px', '340px');
   }
 
-  deleteWord(i: number) {
-    console.log(i);
+  deleteWord(element: any) {
+    this.wordService.currentWord = element;
+    this.openDialog(DialogConfirmDelWordComponent, '300px', '150px');
+
   }
 
 }

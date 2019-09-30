@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Word } from '../models/word';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service.service';
 
 @Injectable()
 export class FillTableService {
@@ -10,28 +11,28 @@ export class FillTableService {
     db: AngularFirestore;
     words: Observable<Word[]>;
     typeId = 0;
+    currentWord: Word;
+    isEditMode = false;
 
-    constructor(_db: AngularFirestore) {
+    constructor(_db: AngularFirestore, public authService: AuthService) {
         this.db = _db;
-
+        this.wordCollection = this.db.collection<Word>('words');
+        // this.wordCollection = this.db.collection<Word>('words', ref => ref.orderBy('id'));
+        this.words = this.wordCollection.valueChanges();
     }
 
-    fillTable(tabstripId: number): Observable<Word[]> {
-        let typeid = 0;
-        switch (tabstripId) {
-            case 0:
-                typeid = 1;
-                break;
-            case 1:
-                typeid = 2;
-                break;
-            case 2:
-                typeid = 3;
-                break;
-        }
+    addWord(word: Word) {
+        word.id = this.db.createId();
+        this.wordCollection.doc(word.id).set(JSON.parse(JSON.stringify(word)));
+    }
 
-        this.wordCollection = this.db.collection('words', ref => ref.where('type', '==', typeid));
-        this.words = this.wordCollection.valueChanges();
-        return this.words;
+    removeWord(id: string) {
+        this.db.collection('words').doc(id).delete();
+    }
+
+    updateWord(word: Word, id: string) {
+        debugger;
+        this.db.collection('words').doc(id).update(
+            { 'word': word.word, 'translation': word.translation, 'type': word.type });
     }
 }

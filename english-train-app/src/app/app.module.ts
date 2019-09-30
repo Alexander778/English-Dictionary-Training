@@ -12,7 +12,7 @@ import {
   MatTableModule,
   MatDialogModule
 } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -28,12 +28,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { DialogWindowComponent } from './dialog-window/dialog-window.component';
 import { RegisterComponent } from './register/register.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { WordslistComponent } from './wordslist/wordslist.component';
 import { TestingComponent } from './testing/testing.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { TablewordComponent } from './tableword/tableword.component';
-import { EditWordDialogComponent } from './edit-word-dialog/edit-word-dialog.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -43,6 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FillTableService } from './services/fillTable.service';
+import { DialogConfirmDelWordComponent } from './dialog-confirm-del-word/dialog-confirm-del-word.component';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -64,12 +63,11 @@ const config = {
     DialogWindowComponent,
     RegisterComponent,
     SidenavComponent,
-    WordslistComponent,
     TestingComponent,
     UserinfoComponent,
     StartPageComponent,
     TablewordComponent,
-    EditWordDialogComponent
+    DialogConfirmDelWordComponent
   ],
   imports: [
     BrowserModule,
@@ -98,10 +96,14 @@ const config = {
     MatSnackBarModule,
     MatTooltipModule,
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, AuthGuard, FillTableService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogWindowComponent],
+  entryComponents: [
+    DialogWindowComponent,
+    DialogConfirmDelWordComponent
+  ],
 })
 export class AppModule { }
