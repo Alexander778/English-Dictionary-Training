@@ -3,4 +3,5 @@ export class Word {
   word: string;
   translation: string;
   type: number;
+  userId: string;
 }
