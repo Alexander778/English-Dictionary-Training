@@ -10,14 +10,12 @@ export class FillTableService {
     wordCollection: AngularFirestoreCollection<Word>;
     db: AngularFirestore;
     words: Observable<Word[]>;
-    typeId = 0;
     currentWord: Word;
     isEditMode = false;
 
     constructor(_db: AngularFirestore, public authService: AuthService) {
         this.db = _db;
         this.wordCollection = this.db.collection<Word>('words');
-        // this.wordCollection = this.db.collection<Word>('words', ref => ref.orderBy('id'));
         this.words = this.wordCollection.valueChanges();
     }
 
