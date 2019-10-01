@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Word } from '../models/word';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AuthService } from '../auth/auth.service.service';
 import { FillTableService } from '../services/fillTable.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
 import { DialogConfirmDelWordComponent } from '../dialog-confirm-del-word/dialog-confirm-del-word.component';
-import { isUndefined } from "util";
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-tableword',
@@ -20,6 +19,7 @@ export class TablewordComponent implements OnInit {
   displayedColumns: string[] = ['Position', 'Word', 'Translation', 'Action'];
   iconsState = {};
   words: Observable<Word[]>;
+  arrayT = [];
   pageSize = 10;  // set default to 10
   pageSizeOptions = [5, 10, 25, 100];
   pageIndex = 5;
@@ -90,7 +90,29 @@ export class TablewordComponent implements OnInit {
 
     this.words = this.wordPageCollection.valueChanges();
     this.wordPageCollection.valueChanges().forEach(item => this.length = item.length);
+    this.words
+      .subscribe(w => {
+        this.arrayT = Object.values(w);
+      });
     return this.words;
   }
 
+  searchWord(text:string) {
+    debugger;
+    let ordByType = '';
+    if (text !== '') {
+      const english = /^[A-Za-z0-9]{1,2} [A-Za-z0-9]*$/;
+      ordByType = english.test(text) ? 'word' : 'translation';
+    } else {
+      ordByType = 'word';
+    }
+
+    this.wordPageCollection = this.db.collection<Word>('words',
+      ref => ref
+        .where('userId', '==', this.authService.user.email)
+        .orderBy(ordByType)
+        .startAt(text)
+        .endAt(text + '\uf8ff'));
+    this.words = this.wordPageCollection.valueChanges();
+  }
 }

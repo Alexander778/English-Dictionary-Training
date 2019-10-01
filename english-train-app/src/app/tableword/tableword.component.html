@@ -2,6 +2,13 @@
   (click)="AddWord()">
   <mat-icon>add</mat-icon>
 </button>
+<mat-form-field>
+  <input matInput placeholder="Search word" (focusout)="searchWord(searchText.value)" #searchText>
+</mat-form-field>
+<button mat-icon-button (click)="searchText.value = ''; searchWord('')">
+  <mat-icon>clear</mat-icon>
+</button>
+
 <table mat-table [dataSource]="words" class="mat-elevation-z8">
 
   <ng-container matColumnDef="Position">
