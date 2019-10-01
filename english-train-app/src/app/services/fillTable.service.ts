@@ -36,7 +36,6 @@ export class FillTableService {
   }
 
   updateWord(word: Word, id: string) {
-    debugger;
     this.db.collection('words').doc(id).update(
       {'word': word.word, 'translation': word.translation, 'type': word.type});
   }
