@@ -1,8 +1,8 @@
-import {Injectable, OnInit} from '@angular/core';
-import {AngularFirestoreCollection, AngularFirestore} from 'angularfire2/firestore';
-import {Word} from '../models/word';
-import {Observable} from 'rxjs';
-import {AuthService} from '../auth/auth.service.service';
+import { Injectable, OnInit } from '@angular/core';
+import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
+import { Word } from '../models/word';
+import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service.service';
 
 @Injectable()
 export class FillTableService {
@@ -19,10 +19,11 @@ export class FillTableService {
   }
 
 
-  initTable(userId: string) {
+  initTable(userId: string): Observable<Word[]> {
     this.wordCollection = this.db.collection<Word>('words',
       ref => ref.where('userId', '==', userId));
     this.words = this.wordCollection.valueChanges();
+    return this.words;
   }
 
   addWord(word: Word) {
@@ -37,6 +38,6 @@ export class FillTableService {
 
   updateWord(word: Word, id: string) {
     this.db.collection('words').doc(id).update(
-      {'word': word.word, 'translation': word.translation, 'type': word.type});
+      { 'word': word.word, 'translation': word.translation, 'type': word.type });
   }
 }

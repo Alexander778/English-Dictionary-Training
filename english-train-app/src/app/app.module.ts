@@ -42,6 +42,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FillTableService } from './services/fillTable.service';
 import { DialogConfirmDelWordComponent } from './dialog-confirm-del-word/dialog-confirm-del-word.component';
+import { TestingService } from './services/testing.service';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -99,7 +100,7 @@ const config = {
     AngularFirestoreModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuard, FillTableService],
+  providers: [AuthService, AuthGuard, FillTableService, TestingService],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogWindowComponent,

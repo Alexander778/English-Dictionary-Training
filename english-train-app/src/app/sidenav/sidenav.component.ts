@@ -64,12 +64,12 @@ export class SidenavComponent implements OnInit {
       routeTo: './testing'
 
     },
-    /*{
-      icon: 'account_box',
-      name: 'User',
+    {
+      icon: 'graphic_eq',
+      name: 'Statistics',
       state: 'noclicked',
       routeTo: './user'
-    }*/
+    }
   ];
   selectedIndex: number = null;
 
