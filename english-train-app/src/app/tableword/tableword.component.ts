@@ -8,6 +8,7 @@ import { FillTableService } from '../services/fillTable.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
 import { DialogConfirmDelWordComponent } from '../dialog-confirm-del-word/dialog-confirm-del-word.component';
+import { isUndefined } from "util";
 
 @Component({
   selector: 'app-tableword',
@@ -16,59 +17,29 @@ import { DialogConfirmDelWordComponent } from '../dialog-confirm-del-word/dialog
 })
 export class TablewordComponent implements OnInit {
 
-  _db: AngularFirestore;
-  // words: Observable<any[]>;
-  /*words: Array<Word> = [
-    {
-      id: 1,
-      word: 'a pen',
-      translation: 'ручка',
-      type: 1
-    },
-    {
-      id: 2,
-      word: 'a pencil',
-      translation: 'олівець',
-      type: 1
-    },
-    {
-      id: 3,
-      word: 'an apple',
-      translation: 'яблуко',
-      type: 1
-    },
-    {
-      id: 4,
-      word: 'awesome',
-      translation: 'крутий',
-      type: 2
-    },
-    {
-      id: 5,
-      word: 'amazing',
-      translation: 'дивовижний',
-      type: 2
-    },
-    {
-      id: 6,
-      word: 'to go',
-      translation: 'йти',
-      type: 3
-    }
-  ];*/
   displayedColumns: string[] = ['Position', 'Word', 'Translation', 'Action'];
   iconsState = {};
   words: Observable<Word[]>;
+  pageSize = 10;  // set default to 10
+  pageSizeOptions = [5, 10, 25, 100];
+  pageIndex = 5;
+  length;
+  wordPageCollection: AngularFirestoreCollection<Word>;
+  db: AngularFirestore;
 
 
   constructor(
     public wordService: FillTableService,
     private dialog: MatDialog,
-    public snackBar: MatSnackBar) {
-    // this.words = this.fillService.words;
+    public authService: AuthService,
+    public _db: AngularFirestore) {
+
+    this.db = _db;
   }
+
   ngOnInit() {
-    this.words = this.wordService.words;
+    this.wordService.initTable(this.authService.user.email);
+    this.words = this.getPagingWord();
   }
 
   openDialog(dialogCom: any, width: string, height: string): void {
@@ -98,6 +69,28 @@ export class TablewordComponent implements OnInit {
     this.wordService.currentWord = element;
     this.openDialog(DialogConfirmDelWordComponent, '300px', '150px');
 
+  }
+
+  getPagingWord(event?: any): Observable<Word[]> {
+    if (!isUndefined(event)) {
+      this.wordPageCollection = this.db.collection<Word>('words',
+        ref => ref
+          .where('userId', '==', this.authService.user.email)
+          .orderBy('word')
+          .startAt(event.pageIndex)
+          .limit(event.pageSize));
+    } else {
+      this.wordPageCollection = this.db.collection<Word>('words',
+        ref => ref
+          .where('userId', '==', this.authService.user.email)
+          .orderBy('word')
+          .startAt(this.pageIndex)
+          .limit(this.pageSize));
+    }
+
+    this.words = this.wordPageCollection.valueChanges();
+    this.wordPageCollection.valueChanges().forEach(item => this.length = item.length);
+    return this.words;
   }
 
 }
