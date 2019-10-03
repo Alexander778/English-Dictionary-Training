@@ -1,6 +1,6 @@
 #taskWord
 {
-    width: 100px;
+    width: 150px;
     margin:0 auto;
     text-align: center;
     font-size: 30px;
@@ -17,4 +17,14 @@ table tr > td > mat-card{
     width: 150px;
     height: 40px;
     text-align:center;
+}
+
+.selected{
+    background-color: green;
+    color:white;
+}
+
+.non-selected{
+    background-color: white;
+    color:black;
 }

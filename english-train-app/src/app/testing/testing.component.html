@@ -8,28 +8,19 @@
       <mat-card-content>
         <mat-card id="taskWord">{{taskWord}}</mat-card>
         <table id="answersWord">
-          <tr>
+          <tr *ngFor="let answer of answers; let i = index;">
             <td>
-              <mat-card>{{answers[0]}}</mat-card>
-            </td>
-            <td>
-              <mat-card>{{answers[1]}}</mat-card>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-card>{{answers[2]}}</mat-card>
-            </td>
-            <td>
-              <mat-card>{{answers[3]}}</mat-card>
+              <mat-card (click)="selectAnswer(answer,i)" [ngClass]="selectedAnswer === i ? 'selected' : '' ">
+                <mat-card-content>{{answer}}</mat-card-content>
+              </mat-card>
             </td>
           </tr>
         </table>
       </mat-card-content>
       <mat-card-footer style="text-align: right; margin:10px;">
-          <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)='nextWord()'>
-              <mat-icon>arrow_forward_ios</mat-icon>
-            </button>
+        <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)='nextWord(currentNum)'>
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </button>
       </mat-card-footer>
     </mat-card>
   </mat-card-content>
