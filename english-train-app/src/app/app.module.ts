@@ -43,6 +43,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FillTableService } from './services/fillTable.service';
 import { DialogConfirmDelWordComponent } from './dialog-confirm-del-word/dialog-confirm-del-word.component';
 import { TestingService } from './services/testing.service';
+import { ShowResultComponent } from './show-result/show-result.component';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -68,7 +69,8 @@ const config = {
     UserinfoComponent,
     StartPageComponent,
     TablewordComponent,
-    DialogConfirmDelWordComponent
+    DialogConfirmDelWordComponent,
+    ShowResultComponent
   ],
   imports: [
     BrowserModule,

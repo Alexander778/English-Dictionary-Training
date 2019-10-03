@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { stringify } from 'querystring';
 import { ArrayType } from '@angular/compiler';
 import { Result } from '../models/result';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-testing',
@@ -16,6 +17,7 @@ import { Result } from '../models/result';
   styleUrls: ['./testing.component.css']
 })
 export class TestingComponent implements OnInit {
+
 
   currentNum = 1;
   countNum = 10;
@@ -52,7 +54,10 @@ export class TestingComponent implements OnInit {
     public testingService: TestingService,
     public wordService: FillTableService,
     public authService: AuthService,
-    _db: AngularFirestore
+    _db: AngularFirestore,
+    private router: Router,
+    private route: ActivatedRoute
+
   ) {
     this.db = _db;
   }
@@ -157,7 +162,7 @@ export class TestingComponent implements OnInit {
       this.resultView = this.result.filter(function (res) {
         return res.point === 1;
       });
-      
+
       debugger;
       this.resultCount = this.resultView.length;
       this.resultDate = this.getCurrentDate();
@@ -167,7 +172,10 @@ export class TestingComponent implements OnInit {
         result: this.resultCount,
         date: this.resultDate
       };
+      this.testingService.result = result;
       this.testingService.addResult(result);
+      this.router.navigate(['.. /result'], { relativeTo: this.route });
+
 
     } else {
       this.shuffle(this.idAnswers);

@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title>Results</mat-card-title>
+  <mat-card-content>
+    Result: <b>{{count}}</b>
+
+    <table border="1">
+      <tr *ngFor="let correct of writeWord; let i = index;">
+        <td>{{correct.word}} - {{correct.answer}}</td>
+        <td *ngFor="let wrong of wrongWord">
+          {{wrong.word}} - {{wrong.answer}}
+        </td>
+      </tr>
+      <!--<tr *ngFor="let correct of writeWord; let i = index;">
+        <td>
+          {{correct.word}} - {{correct.answer}}
+        </td>
+      </tr>
+      <tr *ngFor="let wrong of wrongWord; let i = index;">
+        <td>
+          {{wrong.word}} - {{wrong.answer}}
+        </td>
+      </tr>-->
+    </table>
+  </mat-card-content>
+  <button>Statistics</button>
+</mat-card>
