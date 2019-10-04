@@ -80,7 +80,40 @@ export class TestingComponent implements OnInit {
       ref => ref
         .where('userId', '==', this.authService.user.email));
     this.wordsTesting = this.wordCollectionTesting.valueChanges();
-    this.wordsTesting.subscribe(items => this.allWords = items);
+    this.wordsTesting.subscribe(items => {
+      this.allWords = items;
+      for (let i = 0; i < 10; i++) {
+        let newWordObj = Object.create(wordTemplate);
+        console.log(this.allWords[idWords[i]]);
+        newWordObj.word = this.allWords[idWords[i]].word;
+        const _typeId = this.allWords[idWords[i]].type;
+
+
+        const fakeWords = this.allWords.filter(function (w) {
+          return w.type === _typeId;
+        });
+
+        newWordObj.translation = this.allWords[idWords[i]].translation + 'correct'; // correct
+
+        let fakesId = [];
+        for (let i = 0; i < 3; i++) {
+          fakesId.push(this.getRandomInt(fakeWords.length));
+        }
+
+        newWordObj.fakeTrans1 = fakeWords[fakesId[0]].translation; // fake1
+        newWordObj.fakeTrans2 = fakeWords[fakesId[1]].translation; // fake2
+        newWordObj.fakeTrans3 = fakeWords[fakesId[2]].translation; // fake3
+        this.testingWords.push(newWordObj);
+      }
+
+      this.shuffle(this.idAnswers);
+      this.taskWord = this.testingWords[0].word;
+      this.answers[this.idAnswers[0]] = this.testingWords[0].translation;
+      this.answers[this.idAnswers[1]] = this.testingWords[0].fakeTrans1;
+      this.answers[this.idAnswers[2]] = this.testingWords[0].fakeTrans2;
+      this.answers[this.idAnswers[3]] = this.testingWords[0].fakeTrans3;
+      this.isTestStarted = true;
+    });
 
     const wordTemplate = {
       word: '',
@@ -91,41 +124,6 @@ export class TestingComponent implements OnInit {
     };
 
 
-    for (let i = 0; i < 10; i++) {
-      let newWordObj = Object.create(wordTemplate);
-      newWordObj.word = this.allWords[idWords[i]].word;
-      const _typeId = this.allWords[idWords[i]].type;
-
-
-      const fakeWords = this.allWords.filter(function (w) {
-        return w.type === _typeId;
-      });
-
-      newWordObj.translation = this.allWords[idWords[i]].translation + 'correct'; // correct
-
-      let fakesId = [];
-      for (let i = 0; i < 3; i++) {
-        fakesId.push(this.getRandomInt(fakeWords.length));
-      }
-
-      newWordObj.fakeTrans1 = fakeWords[fakesId[0]].translation; // fake1
-      newWordObj.fakeTrans2 = fakeWords[fakesId[1]].translation; // fake2
-      newWordObj.fakeTrans3 = fakeWords[fakesId[2]].translation; // fake3
-      this.testingWords.push(newWordObj);
-    }
-
-    // set to html
-    // this.testingWords.forEach(item => console.log(item));
-
-
-    this.shuffle(this.idAnswers);
-    this.taskWord = this.testingWords[0].word;
-    this.answers[this.idAnswers[0]] = this.testingWords[0].translation;
-    this.answers[this.idAnswers[1]] = this.testingWords[0].fakeTrans1;
-    this.answers[this.idAnswers[2]] = this.testingWords[0].fakeTrans2;
-    this.answers[this.idAnswers[3]] = this.testingWords[0].fakeTrans3;
-    //this.answers.forEach(item => console.log(item));
-    this.isTestStarted = true;
   }
 
 
