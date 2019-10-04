@@ -1,26 +1,34 @@
 <mat-card>
-  <mat-card-title>Results</mat-card-title>
-  <mat-card-content>
-    Result: <b>{{count}}</b>
+  <table>
+    <tr>
+      <td>
+        <table mat-table [dataSource]="resultWords" class="mat-elevation-z8">
+          <ng-container matColumnDef="Word">
+            <th mat-header-cell *matHeaderCellDef>Word</th>
+            <td mat-cell *matCellDef="let element; let i = index;">{{element.word}}</td>
+          </ng-container>
 
-    <table border="1">
-      <tr *ngFor="let correct of writeWord; let i = index;">
-        <td>{{correct.word}} - {{correct.answer}}</td>
-        <td *ngFor="let wrong of wrongWord">
-          {{wrong.word}} - {{wrong.answer}}
-        </td>
-      </tr>
-      <!--<tr *ngFor="let correct of writeWord; let i = index;">
-        <td>
-          {{correct.word}} - {{correct.answer}}
-        </td>
-      </tr>
-      <tr *ngFor="let wrong of wrongWord; let i = index;">
-        <td>
-          {{wrong.word}} - {{wrong.answer}}
-        </td>
-      </tr>-->
-    </table>
-  </mat-card-content>
-  <button>Statistics</button>
+          <ng-container matColumnDef="Answer">
+            <th mat-header-cell *matHeaderCellDef>Your Answer</th>
+            <td mat-cell *matCellDef="let element" [matTooltip]="element.point?'':element.correct"> {{element.answer}}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"
+            [ngStyle]="{'background-color': row.point ? 'mediumspringgreen' : 'lightcoral'}"></tr>
+        </table>
+      </td>
+      <td>
+        <h1>Your result of test # {{idTest}} is {{count}}/10</h1>
+        <circle-progress [percent]="count*10" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+          [outerStrokeColor]="progressColor" [innerStrokeColor]="'#C7E596'" [animation]="true"
+          [animationDuration]="2500">
+        </circle-progress>
+        <h2 *ngIf="count < 3">Bad</h2>
+        <h2 *ngIf="count > 3 && count < 5">Not bad!</h2>
+        <h2 *ngIf="count >=7">Great!</h2>
+      </td>
+    </tr>
+  </table>
 </mat-card>

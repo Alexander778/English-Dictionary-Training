@@ -11,62 +11,53 @@ export class ShowResultComponent implements OnInit {
   constructor(public testingService: TestingService) { }
 
   // resultCount = this.testingService.result.result;
-  count = 10;
-  writeWord = [
+  displayedColumns: string[] = ['Word', 'Answer'];
+  count = 7;
+  progressColor = 'yellow';
+  idTest = 'testId';
+
+
+  resultWords = [
     {
       word: 'a test',
       correct: 'тест',
-      answer: 'яблуко'
+      answer: 'яблуко',
+      point: 1
     },
     {
       word: 'a test',
       correct: 'тест',
-      answer: 'яблуко'
+      answer: 'тест',
+      point: 1
     },
     {
       word: 'a test',
       correct: 'тест',
-      answer: 'яблуко'
+      answer: 'яблуко',
+      point: 1
     },
     {
       word: 'a test',
       correct: 'тест',
-      answer: 'яблуко'
+      answer: 'тест',
+      point: 0
     },
     {
       word: 'a test',
       correct: 'тест',
-      answer: 'яблуко'
+      answer: 'яблуко',
+      point: 0
     }
   ];
-  wrongWord = [
-    {
-      word: 'a test2',
-      correct: 'тест2',
-      answer: 'яблуко2'
-    },
-    {
-      word: 'a test2',
-      correct: 'тест2',
-      answer: 'яблуко2'
-    },
-    {
-      word: 'a test2',
-      correct: 'тест2',
-      answer: 'яблуко2'
-    },
-    {
-      word: 'a test2',
-      correct: 'тест2',
-      answer: 'яблуко2'
-    },
-    {
-      word: 'a test2',
-      correct: 'тест2',
-      answer: 'яблуко2'
-    }
-  ];
+
   ngOnInit() {
+    if (this.count < 3) {
+      this.progressColor = 'red';
+    } else if (this.count > 3 && this.count < 7) {
+      this.progressColor = 'yellow';
+    } else {
+      this.progressColor = 'green';
+    }
   }
 
 }
