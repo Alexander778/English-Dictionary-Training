@@ -8,8 +8,8 @@
       <mat-card-content>
         <mat-card id="taskWord">{{taskWord}}</mat-card>
         <table id="answersWord">
-          <tr *ngFor="let answer of answers; let i = index;">
-            <td>
+          <tr>
+            <td *ngFor="let answer of answers; let i = index;">
               <mat-card (click)="selectAnswer(answer,i)" [ngClass]="selectedAnswer === i ? 'selected' : '' ">
                 <mat-card-content>{{answer}}</mat-card-content>
               </mat-card>

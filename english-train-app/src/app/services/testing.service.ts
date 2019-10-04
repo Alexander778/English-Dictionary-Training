@@ -9,6 +9,7 @@ export class TestingService {
     resultCollection: AngularFirestoreCollection<Result>;
     db: AngularFirestore;
     result: Result;
+    testHistory = [];
 
     constructor(_db: AngularFirestore) {
         this.db = _db;
