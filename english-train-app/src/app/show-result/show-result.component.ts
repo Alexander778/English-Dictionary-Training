@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestingService } from '../services/testing.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-result',
@@ -8,47 +9,14 @@ import { TestingService } from '../services/testing.service';
 })
 export class ShowResultComponent implements OnInit {
 
-  constructor(public testingService: TestingService) { }
+  constructor(public testingService: TestingService, private router: Router) { }
 
-  // resultCount = this.testingService.result.result;
   displayedColumns: string[] = ['Word', 'Answer'];
-  count = 7;
-  progressColor = 'yellow';
+  progressColor = '';
   idTest = 'testId';
 
-
-  resultWords = [
-    {
-      word: 'a test',
-      correct: 'тест',
-      answer: 'яблуко',
-      point: 1
-    },
-    {
-      word: 'a test',
-      correct: 'тест',
-      answer: 'тест',
-      point: 1
-    },
-    {
-      word: 'a test',
-      correct: 'тест',
-      answer: 'яблуко',
-      point: 1
-    },
-    {
-      word: 'a test',
-      correct: 'тест',
-      answer: 'тест',
-      point: 0
-    },
-    {
-      word: 'a test',
-      correct: 'тест',
-      answer: 'яблуко',
-      point: 0
-    }
-  ];
+  count = this.testingService.result.result;
+  resultWords = this.testingService.testHistory;
 
   ngOnInit() {
     if (this.count < 3) {
@@ -58,6 +26,13 @@ export class ShowResultComponent implements OnInit {
     } else {
       this.progressColor = 'green';
     }
+  }
+
+  openStat() {
+    this.router.navigate(['./main/user']);
+  }
+  testAgain() {
+    this.router.navigate(['./main/testing']);
   }
 
 }

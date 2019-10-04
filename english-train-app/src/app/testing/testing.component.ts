@@ -161,7 +161,6 @@ export class TestingComponent implements OnInit {
         return res.point === 1;
       });
 
-      debugger;
       this.resultCount = this.resultView.length;
       this.resultDate = this.getCurrentDate();
       const result: Result = {
@@ -170,9 +169,12 @@ export class TestingComponent implements OnInit {
         result: this.resultCount,
         date: this.resultDate
       };
+      debugger;
+      this.testingService.testHistory = this.result;
       this.testingService.result = result;
+      
       this.testingService.addResult(result);
-      this.router.navigate(['.. /result'], { relativeTo: this.route });
+      this.router.navigate(['../result'], { relativeTo: this.route });
 
 
     } else {
