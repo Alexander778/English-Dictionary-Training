@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material';
 import { DialogWindowComponent } from '../dialog-window/dialog-window.component';
 import { DialogConfirmDelWordComponent } from '../dialog-confirm-del-word/dialog-confirm-del-word.component';
 import { isUndefined } from 'util';
+import { TestingService } from '../services/testing.service';
+import { Item } from '../models/items';
 
 @Component({
   selector: 'app-tableword',
@@ -32,7 +34,8 @@ export class TablewordComponent implements OnInit {
     public wordService: FillTableService,
     private dialog: MatDialog,
     public authService: AuthService,
-    public _db: AngularFirestore) {
+    public _db: AngularFirestore,
+    public testingService: TestingService) {
 
     this.db = _db;
   }
@@ -97,7 +100,7 @@ export class TablewordComponent implements OnInit {
     return this.words;
   }
 
-  searchWord(text:string) {
+  searchWord(text: string) {
     debugger;
     let ordByType = '';
     if (text !== '') {

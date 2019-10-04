@@ -1,3 +1,27 @@
-<p>
-  testing works!
-</p>
+<mat-card>
+  <mat-card-title>Testing</mat-card-title>
+  <mat-card-content>
+    <button mat-raised-button matTooltip="Start testing" style="background-color: green; color:white; margin: 10px;"
+      (click)="startTest(taskWord)" *ngIf="!isTestStarted">Start</button>
+    <mat-card *ngIf="isTestStarted">
+      <mat-card-title>{{currentNum}}/{{countNum}}</mat-card-title>
+      <mat-card-content>
+        <mat-card id="taskWord">{{taskWord}}</mat-card>
+        <table id="answersWord">
+          <tr *ngFor="let answer of answers; let i = index;">
+            <td>
+              <mat-card (click)="selectAnswer(answer,i)" [ngClass]="selectedAnswer === i ? 'selected' : '' ">
+                <mat-card-content>{{answer}}</mat-card-content>
+              </mat-card>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+      <mat-card-footer style="text-align: right; margin:10px;">
+        <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)='nextWord(currentNum)'>
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

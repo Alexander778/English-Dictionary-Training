@@ -42,6 +42,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FillTableService } from './services/fillTable.service';
 import { DialogConfirmDelWordComponent } from './dialog-confirm-del-word/dialog-confirm-del-word.component';
+import { TestingService } from './services/testing.service';
+import { ShowResultComponent } from './show-result/show-result.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -67,7 +70,8 @@ const config = {
     UserinfoComponent,
     StartPageComponent,
     TablewordComponent,
-    DialogConfirmDelWordComponent
+    DialogConfirmDelWordComponent,
+    ShowResultComponent
   ],
   imports: [
     BrowserModule,
@@ -97,9 +101,19 @@ const config = {
     MatTooltipModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: '#78C000',
+      innerStrokeColor: '#C7E596',
+      animationDuration: 300,
+      ...
+    })
   ],
-  providers: [AuthService, AuthGuard, FillTableService],
+  providers: [AuthService, AuthGuard, FillTableService, TestingService],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogWindowComponent,
