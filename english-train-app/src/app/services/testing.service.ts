@@ -8,6 +8,8 @@ export class TestingService {
     lengthWord: number;
     resultCollection: AngularFirestoreCollection<Result>;
     db: AngularFirestore;
+    result: Result;
+
     constructor(_db: AngularFirestore) {
         this.db = _db;
     }
