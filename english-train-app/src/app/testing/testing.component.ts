@@ -101,7 +101,6 @@ export class TestingComponent implements OnInit {
 
       for (let i = 0; i < this.selectedCount; i++) {
         let newWordObj = Object.create(wordTemplate);
-        console.log(this.allWords[idWords[i]]);
         newWordObj.word = this.allWords[idWords[i]].word;
         const _typeId = this.allWords[idWords[i]].type;
 

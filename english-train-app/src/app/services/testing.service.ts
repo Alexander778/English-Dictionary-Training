@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Result } from '../models/result';
+import { AuthService } from '../auth/auth.service.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class TestingService {
@@ -10,8 +12,9 @@ export class TestingService {
     db: AngularFirestore;
     result: Result;
     testHistory = [];
+    
 
-    constructor(_db: AngularFirestore) {
+    constructor(_db: AngularFirestore, public authService: AuthService) {
         this.db = _db;
     }
 
