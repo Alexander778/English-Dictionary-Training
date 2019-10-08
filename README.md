@@ -6,7 +6,7 @@ Developed by Angular 7 + Angular Material, using Google FireBase
 ## Logining to system
 ![image](https://user-images.githubusercontent.com/29919352/66396810-38b8e480-e9e3-11e9-9a38-a0c784452345.png)
 
-## Manage words for vocabulary (editing and removing)
+## Manage words (editing and removing)
 ![image](https://user-images.githubusercontent.com/29919352/66396884-5b4afd80-e9e3-11e9-9065-498dd31a1663.png)
 
 ## Taking 3 hard-levels test
