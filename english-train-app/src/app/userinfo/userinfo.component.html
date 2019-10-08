@@ -1,5 +1,7 @@
-<p>
-  userinfo works!
-</p>
-
-<button (click)="logout()"></button>
+<mat-card>
+  <div style="display: block;">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+      [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+  </div>
+</mat-card>

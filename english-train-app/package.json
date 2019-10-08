@@ -25,9 +25,11 @@
     "@angular/router": "^6.1.0",
     "angular-notifier": "^4.1.1",
     "angularfire2": "^5.2.1",
+    "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
     "firebase": "^7.0.0",
     "ng-circle-progress": "^1.5.1",
+    "ng2-charts": "^2.2.3",
     "ng2-search-filter": "^0.5.1",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"

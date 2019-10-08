@@ -45,6 +45,7 @@ import { DialogConfirmDelWordComponent } from './dialog-confirm-del-word/dialog-
 import { TestingService } from './services/testing.service';
 import { ShowResultComponent } from './show-result/show-result.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ChartsModule } from 'ng2-charts';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -102,17 +103,19 @@ const config = {
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
-    NgCircleProgressModule.forRoot({
-      // set defaults here
-      radius: 100,
-      outerStrokeWidth: 16,
-      innerStrokeWidth: 8,
-      outerStrokeColor: '#78C000',
-      innerStrokeColor: '#C7E596',
-      animationDuration: 300,
-      ...
-    })
+    ChartsModule,
+    NgCircleProgressModule.forRoot(
+      {
+        radius: 100,
+        outerStrokeWidth: 16,
+        innerStrokeWidth: 8,
+        outerStrokeColor: '#78C000',
+        innerStrokeColor: '#C7E596',
+        animationDuration: 300
+      }
+    )
   ],
+  exports: [ChartsModule],
   providers: [AuthService, AuthGuard, FillTableService, TestingService],
   bootstrap: [AppComponent],
   entryComponents: [
