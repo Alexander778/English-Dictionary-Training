@@ -15,13 +15,19 @@ export class ShowResultComponent implements OnInit {
   progressColor = '';
   idTest = 'testId';
 
-  count = this.testingService.result.result;
+
+  userResult = this.testingService.result.result;
+  maxResult = this.testingService.result.maxResult;
+  percent;
   resultWords = this.testingService.testHistory;
 
   ngOnInit() {
-    if (this.count < 3) {
+    this.percent = (this.userResult * 100) / this.maxResult;
+    console.log(this.percent);
+
+    if (this.percent < 30) {
       this.progressColor = 'red';
-    } else if (this.count > 3 && this.count < 7) {
+    } else if (this.percent > 30 && this.percent < 70) {
       this.progressColor = 'yellow';
     } else {
       this.progressColor = 'green';

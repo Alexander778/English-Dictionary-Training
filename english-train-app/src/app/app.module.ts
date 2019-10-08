@@ -46,6 +46,7 @@ import { TestingService } from './services/testing.service';
 import { ShowResultComponent } from './show-result/show-result.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ChartsModule } from 'ng2-charts';
+import { MatChipsModule } from '@angular/material/chips';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -113,7 +114,8 @@ const config = {
         innerStrokeColor: '#C7E596',
         animationDuration: 300
       }
-    )
+    ),
+    MatChipsModule
   ],
   exports: [ChartsModule],
   providers: [AuthService, AuthGuard, FillTableService, TestingService],

@@ -26,6 +26,7 @@ export class TablewordComponent implements OnInit {
   pageSizeOptions = [5, 10, 25, 100];
   pageIndex = 5;
   length;
+  totalLength;
   wordPageCollection: AngularFirestoreCollection<Word>;
   db: AngularFirestore;
 
@@ -42,6 +43,7 @@ export class TablewordComponent implements OnInit {
 
   ngOnInit() {
     this.wordService.initTable(this.authService.user.email);
+    this.wordService.initTable(this.authService.user.email).forEach(item => this.totalLength = item.length);
     this.words = this.getPagingWord();
   }
 
@@ -101,7 +103,6 @@ export class TablewordComponent implements OnInit {
   }
 
   searchWord(text: string) {
-    debugger;
     let ordByType = '';
     if (text !== '') {
       const english = /^[A-Za-z0-9]{1,2} [A-Za-z0-9]*$/;
