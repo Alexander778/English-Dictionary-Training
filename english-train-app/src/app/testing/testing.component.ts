@@ -47,6 +47,21 @@ export class TestingComponent implements OnInit {
   resultView = [];
   resultCount = 0;
   resultDate = '';
+  countWords: Array<any> = [
+    {
+      id: 1,
+      count: 10
+    },
+    {
+      id: 2,
+      count: 20
+    },
+    {
+      id: 3,
+      count: 30
+    }
+  ];
+  selectedCount = null;
 
 
 
@@ -67,6 +82,7 @@ export class TestingComponent implements OnInit {
   }
 
   startTest() {
+    this.countNum = this.selectedCount;
     let idWords = [];
 
     for (let i = 0; i <= this.count - 1; i++) {
@@ -82,7 +98,8 @@ export class TestingComponent implements OnInit {
     this.wordsTesting = this.wordCollectionTesting.valueChanges();
     this.wordsTesting.subscribe(items => {
       this.allWords = items;
-      for (let i = 0; i < 10; i++) {
+
+      for (let i = 0; i < this.selectedCount; i++) {
         let newWordObj = Object.create(wordTemplate);
         console.log(this.allWords[idWords[i]]);
         newWordObj.word = this.allWords[idWords[i]].word;
@@ -106,6 +123,8 @@ export class TestingComponent implements OnInit {
         this.testingWords.push(newWordObj);
       }
 
+      this.testingWords.forEach(item => console.log(item));
+
       this.shuffle(this.idAnswers);
       this.taskWord = this.testingWords[0].word;
       this.answers[this.idAnswers[0]] = this.testingWords[0].translation;
@@ -122,8 +141,6 @@ export class TestingComponent implements OnInit {
       fakeTrans2: '',
       fakeTrans3: ''
     };
-
-
   }
 
 
@@ -156,7 +173,7 @@ export class TestingComponent implements OnInit {
     this.selectedAnswer = -1;
 
 
-    if (this.currentNum === 11 && this.result.length === 10) {
+    if (this.currentNum === this.selectedCount + 1 && this.result.length === this.selectedCount) {
       this.resultView = this.result.filter(function (res) {
         return res.point === 1;
       });
@@ -167,12 +184,12 @@ export class TestingComponent implements OnInit {
         id: '',
         userId: this.authService.user.email,
         result: this.resultCount,
+        maxResult: this.selectedCount,
         date: this.resultDate
       };
-      debugger;
       this.testingService.testHistory = this.result;
       this.testingService.result = result;
-      
+
       this.testingService.addResult(result);
       this.router.navigate(['../result'], { relativeTo: this.route });
 

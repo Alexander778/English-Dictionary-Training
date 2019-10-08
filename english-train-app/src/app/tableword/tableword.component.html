@@ -8,6 +8,9 @@
 <button mat-icon-button (click)="searchText.value = ''; searchWord('')">
   <mat-icon>clear</mat-icon>
 </button>
+<mat-chip-list style="display: inline-block;">
+  Total count:<mat-chip style="background-color: green;color:white;">{{totalLength}}</mat-chip>
+</mat-chip-list>
 
 <table mat-table [dataSource]="words" class="mat-elevation-z8">
 

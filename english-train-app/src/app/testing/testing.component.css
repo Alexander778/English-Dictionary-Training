@@ -28,3 +28,8 @@ table tr > td > mat-card{
     background-color: white;
     color:black;
 }
+
+.startBtn{
+    background-color: green; 
+    color:white;
+}

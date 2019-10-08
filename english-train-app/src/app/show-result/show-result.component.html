@@ -20,14 +20,14 @@
         </table>
       </td>
       <td>
-        <h1>Your result of test # {{idTest}} is {{count}}/10</h1>
-        <circle-progress [percent]="count*10" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+        <h1>Your result of test # {{idTest}} is {{userResult}}/10</h1>
+        <circle-progress [percent]="percent" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
           [outerStrokeColor]="progressColor" [innerStrokeColor]="'#C7E596'" [animation]="true"
           [animationDuration]="2500">
         </circle-progress>
-        <h2 *ngIf="count < 3">Bad</h2>
-        <h2 *ngIf="count > 3 && count < 5">Not bad!</h2>
-        <h2 *ngIf="count >=7">Great!</h2>
+        <h2 *ngIf="percent < 30">Bad</h2>
+        <h2 *ngIf="percent > 30 && percent < 50">Not bad!</h2>
+        <h2 *ngIf="percent >=70">Great!</h2>
       </td>
     </tr>
   </table>
