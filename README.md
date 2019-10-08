@@ -3,7 +3,7 @@
 The main purpose of this app is improve vocalubary and memory skills.
 Developed by Angular 7 + Angular Material, using Google FireBase
 
-## Logining to system
+## Login to system
 ![image](https://user-images.githubusercontent.com/29919352/66396810-38b8e480-e9e3-11e9-9a38-a0c784452345.png)
 
 ## Manage words (editing and removing)
