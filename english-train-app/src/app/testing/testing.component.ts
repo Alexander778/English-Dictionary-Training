@@ -101,7 +101,6 @@ export class TestingComponent implements OnInit {
 
       for (let i = 0; i < this.selectedCount; i++) {
         let newWordObj = Object.create(wordTemplate);
-        console.log(this.allWords[idWords[i]]);
         newWordObj.word = this.allWords[idWords[i]].word;
         const _typeId = this.allWords[idWords[i]].type;
 
@@ -110,7 +109,7 @@ export class TestingComponent implements OnInit {
           return w.type === _typeId;
         });
 
-        newWordObj.translation = this.allWords[idWords[i]].translation + 'correct'; // correct
+        newWordObj.translation = this.allWords[idWords[i]].translation; // correct
 
         let fakesId = [];
         for (let i = 0; i < 3; i++) {
