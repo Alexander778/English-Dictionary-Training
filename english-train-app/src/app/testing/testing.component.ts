@@ -47,6 +47,21 @@ export class TestingComponent implements OnInit {
   resultView = [];
   resultCount = 0;
   resultDate = '';
+  countWords: Array<any> = [
+    {
+      id: 1,
+      count: 10
+    },
+    {
+      id: 2,
+      count: 20
+    },
+    {
+      id: 3,
+      count: 30
+    }
+  ];
+  selectedCount = null;
 
 
 
@@ -67,6 +82,7 @@ export class TestingComponent implements OnInit {
   }
 
   startTest() {
+    console.log(this.selectedCount);
     let idWords = [];
 
     for (let i = 0; i <= this.count - 1; i++) {
@@ -122,8 +138,6 @@ export class TestingComponent implements OnInit {
       fakeTrans2: '',
       fakeTrans3: ''
     };
-
-
   }
 
 
@@ -169,10 +183,9 @@ export class TestingComponent implements OnInit {
         result: this.resultCount,
         date: this.resultDate
       };
-      debugger;
       this.testingService.testHistory = this.result;
       this.testingService.result = result;
-      
+
       this.testingService.addResult(result);
       this.router.navigate(['../result'], { relativeTo: this.route });
 

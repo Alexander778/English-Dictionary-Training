@@ -1,8 +1,16 @@
 <mat-card>
   <mat-card-title>Testing</mat-card-title>
   <mat-card-content>
-    <button mat-raised-button matTooltip="Start testing" style="background-color: green; color:white; margin: 10px;"
-      (click)="startTest(taskWord)" *ngIf="!isTestStarted">Start</button>
+    <mat-form-field *ngIf="!isTestStarted">
+      <mat-label>Select count of words</mat-label>
+      <mat-select [(value)]="selectedCount" >
+        <mat-option *ngFor="let number of countWords" [value]="number.count">
+          {{number.count}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button matTooltip="Start testing" (click)="startTest(taskWord)" *ngIf="!isTestStarted" style="margin: 10px;"
+      [disabled]="selectedCount==null" [ngClass]="{'startBtn': selectedCount!=null}">Start</button>
     <mat-card *ngIf="isTestStarted">
       <mat-card-title>{{currentNum}}/{{countNum}}</mat-card-title>
       <mat-card-content>
