@@ -22,6 +22,7 @@ const appRoutes: Routes = [
       { path: 'start', component: StartPageComponent, data: { animation: 'Start' } },
       { path: 'list', component: TablewordComponent, data: { animation: 'List' } },
       { path: 'testing', component: TestingComponent, data: { animation: 'Testing' } },
+      { path: 'testing/:id', component: TestingComponent, data: { animation: 'Testing' } },
       { path: 'user', component: UserinfoComponent, data: { animation: 'User' } },
       { path: 'result', component: ShowResultComponent }
     ]
