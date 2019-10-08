@@ -109,7 +109,7 @@ export class TestingComponent implements OnInit {
           return w.type === _typeId;
         });
 
-        newWordObj.translation = this.allWords[idWords[i]].translation + 'correct'; // correct
+        newWordObj.translation = this.allWords[idWords[i]].translation; // correct
 
         let fakesId = [];
         for (let i = 0; i < 3; i++) {
