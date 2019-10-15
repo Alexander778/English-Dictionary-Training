@@ -20,7 +20,7 @@ export class TestingService {
 
     addResult(result: Result) {
         this.resultCollection = this.db.collection<Result>('results');
-        result.id = this.db.createId();
+        // result.id = this.db.createId();
         this.resultCollection.doc(result.id).set(JSON.parse(JSON.stringify(result)));
     }
 }

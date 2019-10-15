@@ -25,7 +25,6 @@ export class TestingComponent implements OnInit {
   answers = ['a test', 'a test2', 'a test3', 'a test4'];
   taskWord = '';
   count: number;
-  db: AngularFirestore;
   wordCollectionTesting: AngularFirestoreCollection<Word>;
   wordsTesting: Observable<Word[]>;
   allWords = [];
@@ -62,6 +61,7 @@ export class TestingComponent implements OnInit {
     }
   ];
   selectedCount = null;
+  uniqueTestId = '';
 
 
 
@@ -69,19 +69,21 @@ export class TestingComponent implements OnInit {
     public testingService: TestingService,
     public wordService: FillTableService,
     public authService: AuthService,
-    _db: AngularFirestore,
+    public db: AngularFirestore,
     private router: Router,
     private route: ActivatedRoute
 
   ) {
-    this.db = _db;
   }
 
   ngOnInit() {
     this.wordService.initTable(this.authService.user.email).forEach(item => this.count = item.length);
+    // console.log(this.route.snapshot.paramMap.get('id'));
   }
 
   startTest() {
+    this.uniqueTestId = this.db.createId();
+    this.router.navigate(['main/testing'], { queryParams: { testId: this.uniqueTestId } });
     this.countNum = this.selectedCount;
     let idWords = [];
 
@@ -180,7 +182,7 @@ export class TestingComponent implements OnInit {
       this.resultCount = this.resultView.length;
       this.resultDate = this.getCurrentDate();
       const result: Result = {
-        id: '',
+        id: this.uniqueTestId,
         userId: this.authService.user.email,
         result: this.resultCount,
         maxResult: this.selectedCount,
