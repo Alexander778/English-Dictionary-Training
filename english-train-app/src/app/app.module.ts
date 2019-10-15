@@ -47,6 +47,8 @@ import { ShowResultComponent } from './show-result/show-result.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ChartsModule } from 'ng2-charts';
 import { MatChipsModule } from '@angular/material/chips';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -73,7 +75,8 @@ const config = {
     StartPageComponent,
     TablewordComponent,
     DialogConfirmDelWordComponent,
-    ShowResultComponent
+    ShowResultComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +118,8 @@ const config = {
         animationDuration: 300
       }
     ),
-    MatChipsModule
+    MatChipsModule,
+    MatSlideToggleModule
   ],
   exports: [ChartsModule],
   providers: [AuthService, AuthGuard, FillTableService, TestingService],
