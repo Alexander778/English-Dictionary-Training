@@ -10,18 +10,22 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { AuthGuard } from './core/auth.guard';
 import { TablewordComponent } from './tableword/tableword.component';
 import { ShowResultComponent } from './show-result/show-result.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'reset', component: ResetPasswordComponent },
   {
     path: 'main', component: MainpageComponent, canActivate: [AuthGuard],
     children: [
       { path: 'start', component: StartPageComponent, data: { animation: 'Start' } },
       { path: 'list', component: TablewordComponent, data: { animation: 'List' } },
       { path: 'testing', component: TestingComponent, data: { animation: 'Testing' } },
+      { path: 'changePassword', component: ChangePasswordComponent, data: { animation: 'Change' } },
       { path: 'testing/:id', component: TestingComponent, data: { animation: 'Testing' } },
       { path: 'user', component: UserinfoComponent, data: { animation: 'User' } },
       { path: 'result', component: ShowResultComponent }

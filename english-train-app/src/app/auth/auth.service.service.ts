@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { MatSnackBar } from '@angular/material';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 
 
@@ -13,8 +14,9 @@ export class AuthService {
   user: User;
   router: Router;
   authState: any = null;
+  currentPassword = null;
 
-  constructor(public afAuth: AngularFireAuth, private _snackBar: MatSnackBar) {
+  constructor(public afAuth: AngularFireAuth, private _snackBar: MatSnackBar, public _router: Router) {
     this.afAuth.authState.subscribe(user => {
       this.authState = user;
 
@@ -50,6 +52,7 @@ export class AuthService {
   }
 
   login(email: string, password: string, router: Router) {
+    this.currentPassword = password;
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(function (user) {
       router.navigate(['./main/start']);
     }).catch((error) => {
@@ -69,6 +72,26 @@ export class AuthService {
     localStorage.removeItem('user');
     console.log(router);
     router.navigate(['/login']);
+  }
+
+  changePassword(newPassword: string, router: Router, afAuth: AngularFireAuth) {
+    this.user.updatePassword(newPassword).then(function () {
+      afAuth.auth.signOut();
+      localStorage.removeItem('user');
+      router.navigate(['/login']);
+    }).catch(function (error) {
+      this.openSnackBar(error, '');
+    });
+  }
+
+  resetPassword(email: string, router: Router, afAuth: AngularFireAuth) {
+    afAuth.auth.sendPasswordResetEmail(email)
+      .then(function () {
+        router.navigate(['/login']);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
   }
 
   openSnackBar(message: string, action: string) {

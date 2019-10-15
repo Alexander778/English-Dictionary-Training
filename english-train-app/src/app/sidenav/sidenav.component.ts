@@ -101,6 +101,10 @@ export class SidenavComponent implements OnInit {
   logout() {
     this.auth.logout(this.router);
   }
+
+  changePassword() {
+    this.router.navigate(['/main/changePassword']);
+  }
   ngOnInit() {
   }
 
