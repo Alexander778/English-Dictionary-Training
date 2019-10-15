@@ -84,6 +84,16 @@ export class AuthService {
     });
   }
 
+  resetPassword(email: string, router: Router, afAuth: AngularFireAuth) {
+    afAuth.auth.sendPasswordResetEmail(email)
+      .then(function () {
+        router.navigate(['/login']);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 5000,

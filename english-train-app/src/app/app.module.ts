@@ -49,6 +49,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MatChipsModule } from '@angular/material/chips';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const config = {
   apiKey: 'AIzaSyBB6CZc8eR3w5fMucuvSOpFrN2XqpXYpLI',
@@ -76,7 +77,8 @@ const config = {
     TablewordComponent,
     DialogConfirmDelWordComponent,
     ShowResultComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -11,12 +11,14 @@ import { AuthGuard } from './core/auth.guard';
 import { TablewordComponent } from './tableword/tableword.component';
 import { ShowResultComponent } from './show-result/show-result.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'reset', component: ResetPasswordComponent },
   {
     path: 'main', component: MainpageComponent, canActivate: [AuthGuard],
     children: [
